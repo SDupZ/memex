@@ -1,29 +1,36 @@
 @import 'base/settings';
 
+
 // Vendors
 @import 'vendors/flexy-grid';
 @import 'vendors/hamburgers/hamburgers';
+
 
 // Base
 @import 'base/core';
 @import 'base/layout';
 
+
 // helpers
 @import 'helpers/helpers';
 
+
 // Components
 @import 'components/blog-tile';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/menu';
 @import 'components/dividers';
+@import 'components/footer';
+@import 'components/header';
 @import 'components/headings';
+@import 'components/jumbotron';
+@import 'components/menu';
 @import 'components/text';
 
+
 // Pages
-@import 'pages/homepage';
-@import 'pages/default';
 @import 'pages/blog';
+@import 'pages/default';
+@import 'pages/homepage';
+
 
 // It's a shame to put code here !
 @import 'shame';

@@ -64,7 +64,11 @@
 }
 
 .navbar-slogan {
-    display: block;
+    display: none;
+
+    @include respond-to(tablet) {
+        display: block;
+    }
 }
 
 .navbar-logo {

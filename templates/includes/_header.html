@@ -12,8 +12,7 @@
     <div class="container">
         <div class="header">
 
-            {% comment %}
-            <a href="" class="navbar-img">
+            <a href="{% url 'home' %}" class="navbar-img">
                 <div class="navbar-logo" style="background-image: url(
                     {% if color == 'white' %}
                         {% static 'img/temp/logo--dark.png' %}
@@ -22,22 +21,16 @@
                     {% endif %})">
                 </div>
             </a>
-            {% endcomment %}
 
-            <a href="{% url 'front' %}" class="navbar-slogan">Title</a>
-
-            {% comment %}
             <nav class="nav">
                 <!-- Desktop -->
                 <ul class="nav__list">
-                    <li class="nav__item"><a class="nav__item__content" href="">Blog</a></li>
+                    <li class="nav__item"><a class="nav__item__content" href="{% url 'blogs_list' %}">Blog</a></li>
                     <li class="nav__item"><a class="nav__item__content" href="">FAQ</a></li>
                     <li class="nav__item divider-vertical"></li>
                     <li class="nav__item"><a class="nav__item__content" href="">Contact</a></li>
-
                 </ul>
             </nav>
-            {% endcomment %}
         </div>
     </div>
 </div>
@@ -45,12 +38,12 @@
 <div class="menu-bg {% if color == 'default' %}menu-bg--white-nav{% endif %}"></div>
 <div class="menu {% if color == 'default' %}menu--white-nav{% endif %}">
     <ul class="menu-splitL">
-        <li><a href="">Blog</a></li>
+        <li><a href="{% url 'blogs_list' %}">Blog</a></li>
         <li><a href="">FAQ</a></li>
         <li><a href="">Contact</a></li>
     </ul>
     <ul class="menu-splitR">
-        <li><a href="">Blog</a></li>
+        <li><a href="{% url 'blogs_list' %}">Blog</a></li>
         <li><a href="">FAQ</a></li>
         <li><a href="">Contact</a></li>
     </ul>

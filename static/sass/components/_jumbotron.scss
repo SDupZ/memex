@@ -1,0 +1,16 @@
+.jumbotron {
+    background-color: $white;
+	margin-bottom: 0;
+	position: relative;
+
+    height: 500px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+
+	p {
+        color: $black;
+		margin-top: 0;
+	}
+}
