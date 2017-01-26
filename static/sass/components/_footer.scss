@@ -1,0 +1,29 @@
+.footer {
+    text-align: center;
+
+    background-color: $white;
+    color: $grey;
+}
+
+.footer__container {
+    display: flex;
+}
+
+.footer__item-group {
+    display: inline-block;
+    text-align: left;
+    width: 20%;
+
+    &--right {
+        text-align: right;
+        width: 30%;
+        margin-left: auto;
+    }
+ }
+
+.footer__logo {
+    width: 124px;
+    filter: gray; /* IE6-9 */
+    filter: grayscale(0.6); /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(0.6); /* Google Chrome, Safari 6+ & Opera 15+ */
+}

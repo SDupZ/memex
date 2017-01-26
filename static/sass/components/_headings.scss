@@ -1,0 +1,58 @@
+.heading__page {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 36px;
+    color: $black;
+    margin: 55px auto;
+
+    &--white {
+        color: $white;
+    }
+}
+
+
+.heading__content {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey;
+}
+
+
+.heading__small {
+    color: $grey--darker;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+.heading__fancy {
+    line-height: 0.5;
+    text-align: center;
+}
+
+.heading__fancy span {
+    display: inline-block;
+    position: relative;
+
+    &:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+    &::after {
+        left: 100%;
+        margin-left: 15px;
+    }
+}
+
+.heading__fancy span:before,
+.heading__fancy span:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      border-bottom: 1px solid $grey--lighter-2;
+      top: 0;
+      width: 30px;
+}

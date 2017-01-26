@@ -1,0 +1,22 @@
+.grid {
+}
+
+.grid__item {
+    // padding-right: $gutter;
+}
+
+html {
+    color: $black;
+    font-size: 1em;
+    line-height: 1.4;
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+    font-family: 'Oxygen', sans-serif;
+
+    p {
+        font: normal 15px/1.9em 'Merriweather', Georgia, serif;
+    }
+}

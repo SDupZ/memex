@@ -1,0 +1,22 @@
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 100%;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include respond-to(mobile) {
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+}
+
+.container--thin {
+    max-width: 594px;
+}
+
+
+.wrapper--center {
+    text-align: center;
+}

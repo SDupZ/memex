@@ -1,0 +1,9 @@
+<a href="{% url 'blog' slug %}" class="blog-card">
+    <div class="blog-img" style="background-image: url({{ img }});">
+    </div>
+
+    <div class="blog-text">
+        <p class="heading__fancy"><span>{{ title }}</span></p>
+        <div class="heading__content">{{ blurb }}</div>
+    </div>
+</a>

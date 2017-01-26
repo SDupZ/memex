@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'includes/_header.html' with color="white" %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="page page--blog">
+        <div class="container container--thin">
+            <div class="blog__content">
+                <div class="heading__page">
+                    {{ blog.title }}
+                </div>
+                <p>{{ blog.created|date:'N d, Y'}}</p>
+                <p>{{ blog.content|safe }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}

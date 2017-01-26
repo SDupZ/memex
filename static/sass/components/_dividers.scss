@@ -1,0 +1,16 @@
+.divider-vertical {
+    height: 18px;
+    margin: 15px 5px 0 5px;
+    border-right: 1px solid white;
+}
+
+.divider-horizontal {
+    border: 0;
+    border-top-color: $grey--lighter-2;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: content-box;
+    display: block;
+    height: 0;
+    margin: 20px 0;
+}

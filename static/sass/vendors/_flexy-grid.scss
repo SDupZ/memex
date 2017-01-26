@@ -1,0 +1,595 @@
+//  *------------------------------------*
+//      $FLEXY-GRID
+//  *------------------------------------*
+//  Version: 0.7
+
+
+
+//  *------------------------------------*
+//      $INTRODUCTION
+//  *------------------------------------*
+//
+//
+//  Bit and pieces of frameworks that I like put together.
+//  Please refere to them to further documentation
+//
+//  https://github.com/csswizardry/csswizardry-grids
+//  http://bulma.io/documentation/grid/
+//  https://philipwalton.github.io/solved-by-flexbox/demos/grids/
+//
+//  Does not add any prefix. you may consider using post-css for that
+
+
+
+
+//  *------------------------------------*\
+//      $VARIABLES
+//  *------------------------------------*/
+//
+//  If you are building a non-responsive site but would still like to use
+//  the grid, set this to ‘false’:
+$responsive:         true !default;
+
+
+//  Set the spacing between your grid items.
+$gutter:             24px !default;
+
+
+//  If you want to use print as mediaquery
+$print:              false !default;
+
+
+//  If you want to be able to use the grid to hide elements
+$hide:               false !default;
+
+
+//  Define your breakpoints. The first value is the prefix that shall be used for
+//  your classes (e.g. `.palm--one-half`), the second value is the media query
+//  that the breakpoint fires at.
+$breakpoints: (
+    // 'less-mobile': '(max-width: 479px)',
+    'mobile': '(min-width: 480px)',
+    // 'less-tablet': '(max-width: 767px)',
+    'tablet': '(min-width: 768px)',
+    // 'less-desktop': '(max-width: 1023px)',
+    'desktop': '(min-width: 1024px)',
+) !default;
+
+//  Would you like Sass’ silent classes, or regular CSS classes?
+$use-silent-classes: false !default;
+
+
+//  Define which namespaced breakpoints you would like to generate for each of
+//  widths, push and pull. This is handy if you only need pull on, say, desk, or
+//  you only need a new width breakpoint at mobile sizes. It allows you to only
+//  compile as much CSS as you need. All are turned on by default, but you can
+//  add and remove breakpoints at will.
+//
+//  Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+//  have been set to ‘true’.
+$breakpoint-has-widths:    ('mobile', 'tablet', 'desktop') !default;
+// $breakpoint-has-push:   ('mobile', 'tablet', 'desktop') !default;
+// $breakpoint-has-pull:   ('mobile', 'tablet', 'desktop') !default;
+
+
+//  You do not need to edit anything from this line onward
+$class-type: if($use-silent-classes, unquote('%'), unquote('.'));
+
+//  *------------------------------------*\
+//      $MIXINS
+//  *------------------------------------*/
+//
+//  These mixins are for the library to use only, you should not need to modify
+//  them at all.
+
+//  Enclose a block of code with a media query as named in `$breakpoints`.
+@mixin respond-to($selector1, $selector2:'') {
+    $breakpoint-found: false;
+
+    @if map-has-key($breakpoints, $selector1) {
+
+        @if $selector2 == '' {
+
+            @media only screen and #{map-get($breakpoints, $selector1)} {
+                @content;
+            }
+
+        } @else {
+
+            @if map-has-key($breakpoints, $selector2) {
+
+                @media only screen and #{map-get($breakpoints, $selector1)} and #{map-get($breakpoints, $selector2)} {
+                    @content;
+                }
+
+            } @else {
+                @warn "Breakpoint ‘#{$selector2}’ does not exist";
+            }
+
+        }
+
+    } @else {
+        @warn "Breakpoint ‘#{$selector1}’ does not exist";
+    }
+
+
+    // @each $name, $declaration in $breakpoints {
+    //     // $name: nth($breakpoint, 1);
+    //     // $declaration: nth($breakpoint, 2);
+    //
+    //     @if $media-query == $name and $declaration {
+    //         $breakpoint-found: true;
+    //
+    //         @media only screen and #{$declaration} {
+    //             @content;
+    //         }
+    //     }
+    // }
+
+    // @if not $breakpoint-found {
+    //     @warn "Breakpoint ‘#{$media-query}’ does not exist";
+    // }
+}
+
+
+//  Drop relative positioning into silent classes which can’t take advantage of
+//  the `[class*="push--"]` and `[class*="pull--"]` selectors.
+@mixin silent-relative {
+    @if $use-silent-classes {
+        position: relative;
+    }
+}
+
+
+
+
+//  *------------------------------------*\
+//      $GRID SETUP
+//  *------------------------------------*/
+
+#{$class-type}grid {
+    // ***
+    // Base for grid
+    // ***
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -($gutter);
+    height: 100%;
+
+    // ***
+    // Alignment per grid
+    // ***
+
+    // .grid--top
+    &--top {
+        align-items: flex-start;
+    }
+
+    // .grid--bottom
+    &--bottom {
+        align-items: flex-end;
+    }
+
+    // .grid--center
+    &--center {
+        justify-content: center;
+    }
+
+    // .grid--middle
+    &--middle {
+        align-items: center;
+    }
+
+    // .grid--right
+    &--right {
+        justify-content: flex-end;
+    }
+
+    // .grid--left
+    &--left {
+        justify-content: flex-start;
+    }
+
+    // .grid--row
+    &--row {
+        flex-direction: row;
+    }
+
+    // .grid--column
+    &--column {
+        flex-direction: column;
+    }
+
+    &__item {
+        // ***
+        // Base for grid item
+        // ***
+
+        // TODO: max-width had to be added as a fix for IE 11, border box doesnt work when used with flex. We may need to refactor this using a mixin or post-css.
+        // https://github.com/philipwalton/flexbugs/issues/3
+        flex: 1 1 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-left: $gutter;
+
+        // ***
+        // Alignment per grid
+        // ***
+
+        // .grid__item--top
+        &--top {
+            align-self: flex-start;
+        }
+
+        // .grid__item--bottom
+        &--bottom {
+            align-self: flex-end;
+        }
+
+        // .grid__item--center
+        &--center {
+            align-self: center;
+        }
+
+        // .grid__item--middle
+        &--middle {
+            // TODO
+        }
+
+        // .grid__item--fixed
+        &--fixed {
+            flex: none;
+        }
+
+    }
+
+}
+
+
+
+// TODO: clean that and add comment
+#{$class-type}grid--no-flex {
+    #{$class-type}grid__item {
+        flex: none;
+    }
+}
+
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+#{$class-type}grid--tapered {
+    margin-left: -($gutter / 6);
+
+    > #{$class-type}grid__item {
+        padding-left: ($gutter / 6);
+    }
+}
+
+
+/**
+ * Create grids with narrower gutters. Extends `.grid`.
+ */
+#{$class-type}grid--narrow {
+    margin-left: -($gutter / 2);
+
+    > #{$class-type}grid__item {
+        padding-left: $gutter / 2;
+    }
+}
+
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+#{$class-type}grid--wide {
+    margin-left: -($gutter * 2);
+
+    > #{$class-type}grid__item {
+        padding-left: $gutter * 2;
+    }
+}
+
+// TODO: Refactor that
+/**
+ * Add the possibility to add margin bottom
+ */
+#{$class-type}grid--marginbottom {
+
+    &#{$class-type}grid {
+        margin-bottom: -($gutter);
+        > #{$class-type}grid__item {
+            margin-bottom: $gutter;
+        }
+    }
+
+    &#{$class-type}grid--narrow {
+        margin-bottom: -($gutter / 2);
+        > #{$class-type}grid__item {
+            margin-bottom: ($gutter / 2);
+        }
+    }
+
+    &#{$class-type}grid--wide {
+        margin-bottom: -($gutter * 2);
+        > #{$class-type}grid__item {
+            margin-bottom: ($gutter * 2);
+        }
+    }
+
+    &#{$class-type}grid--tapered {
+        margin-bottom: -($gutter / 6);
+        > #{$class-type}grid__item {
+            margin-bottom: ($gutter / 6);
+        }
+    }
+
+}
+
+
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Create our width classes, prefixed by the specified namespace.
+ */
+@mixin device-type($namespace: '') {
+    $prefix: $class-type + $namespace;
+
+    /**
+     * Hide
+     */
+    @if $hide {
+        #{$prefix}hide         { display: none!important }
+    }
+
+    /**
+     * Fixed
+     */
+    #{$prefix}fixed         { flex: none; }
+
+    /**
+     * Whole
+     */
+    #{$prefix}one-whole         { flex: 0 0 100%; max-width: 100%;}
+
+
+    /**
+     * Halves
+     */
+    #{$prefix}one-half          { flex: 0 0 50%; max-width: 50%; }
+
+
+    /**
+     * Thirds
+     */
+    #{$prefix}one-third         { flex: 0 0 33.333%; max-width: 33.333%; }
+    #{$prefix}two-thirds        { flex: 0 0 66.666%; max-width: 66.666%; }
+
+
+    /**
+     * Quarters
+     */
+    #{$prefix}one-quarter       { flex: 0 0 25%; max-width: 25%;}
+    #{$prefix}two-quarters      { @extend #{$prefix}one-half; }
+    #{$prefix}three-quarters    { flex: 0 0 75%; max-width: 75%;}
+
+
+    /**
+     * Fifths
+     */
+    #{$prefix}one-fifth         { flex: 0 0 20%; max-width: 20%; }
+    #{$prefix}two-fifths        { flex: 0 0 40%; max-width: 40%; }
+    #{$prefix}three-fifths      { flex: 0 0 60%; max-width: 60%; }
+    #{$prefix}four-fifths       { flex: 0 0 80%; max-width: 80%; }
+
+
+    /**
+     * Sixths
+     */
+    #{$prefix}one-sixth         { flex: 0 0 16.666%; max-width: 16.666%; }
+    #{$prefix}two-sixths        { @extend #{$prefix}one-third; }
+    #{$prefix}three-sixths      { @extend #{$prefix}one-half; }
+    #{$prefix}four-sixths       { @extend #{$prefix}two-thirds; }
+    #{$prefix}five-sixths       { flex: 0 0 83.333%; max-width: 83.333%; }
+
+
+    /**
+     * Eighths
+     */
+    #{$prefix}one-eighth        { flex: 0 0 12.5%; max-width: 12.5%; }
+    #{$prefix}two-eighths       { @extend #{$prefix}one-quarter; }
+    #{$prefix}three-eighths     { flex: 0 0 37.5%; max-width: 37.5%; }
+    #{$prefix}four-eighths      { @extend #{$prefix}one-half; }
+    #{$prefix}five-eighths      { flex: 0 0 62.5%; max-width: 62.5%; }
+    #{$prefix}six-eighths       { @extend #{$prefix}three-quarters; }
+    #{$prefix}seven-eighths     { flex: 0 0 87.5%; max-width: 87.5%; }
+
+
+    /**
+     * Tenths
+     */
+    #{$prefix}one-tenth         { flex: 0 0 10%; max-width: 10%; }
+    #{$prefix}two-tenths        { @extend #{$prefix}one-fifth; }
+    #{$prefix}three-tenths      { flex: 0 0 30%; max-width: 30%; }
+    #{$prefix}four-tenths       { @extend #{$prefix}two-fifths; }
+    #{$prefix}five-tenths       { @extend #{$prefix}one-half; }
+    #{$prefix}six-tenths        { @extend #{$prefix}three-fifths; }
+    #{$prefix}seven-tenths      { flex: 0 0 70%; max-width: 70%; }
+    #{$prefix}eight-tenths      { @extend #{$prefix}four-fifths; }
+    #{$prefix}nine-tenths       { flex: 0 0 90%; max-width: 90%; }
+
+
+    /**
+     * Twelfths
+     */
+    #{$prefix}one-twelfth       { flex: 0 0 8.333%; max-width: 8.333%;}
+    #{$prefix}two-twelfths      { @extend #{$prefix}one-sixth; }
+    #{$prefix}three-twelfths    { @extend #{$prefix}one-quarter; }
+    #{$prefix}four-twelfths     { @extend #{$prefix}one-third; }
+    #{$prefix}five-twelfths     { flex: 0 0 41.666%; max-width: 41.666%;}
+    #{$prefix}six-twelfths      { @extend #{$prefix}one-half; }
+    #{$prefix}seven-twelfths    { flex: 0 0 58.333%; max-width: 58.333%;}
+    #{$prefix}eight-twelfths    { @extend #{$prefix}two-thirds; }
+    #{$prefix}nine-twelfths     { @extend #{$prefix}three-quarters; }
+    #{$prefix}ten-twelfths      { @extend #{$prefix}five-sixths; }
+    #{$prefix}eleven-twelfths   { flex: 0 0 91.666%; max-width: 91.666%;}
+}
+
+
+/**
+ * Our regular, non-responsive width classes.
+ */
+@include device-type;
+
+
+/**
+ * Our responsive classes, if we have enabled them.
+ */
+@if $responsive {
+
+    @each $name in $breakpoint-has-widths {
+        @include respond-to($name) {
+           @include device-type('#{$name}--');
+        }
+    }
+
+}
+
+
+/**
+ * Our grid for print, if we have enabled it
+ */
+@if $print {
+
+    @media print  {
+        @include device-type('print--');
+    }
+
+}
+
+
+
+
+
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+@mixin push-setup($namespace: "") {
+    $prefix: $class-type + "push--" + $namespace;
+
+    /**
+     * None
+     */
+    #{$prefix}none               { margin-left:0; @include silent-relative; }
+
+    /**
+     * Whole
+     */
+    #{$prefix}one-whole           { margin-left:100%; @include silent-relative; }
+
+
+    /**
+     * Halves
+     */
+    #{$prefix}one-half            { margin-left:50%; @include silent-relative; }
+
+
+    /**
+     * Thirds
+     */
+    #{$prefix}one-third           { margin-left:33.333%; @include silent-relative; }
+    #{$prefix}two-thirds          { margin-left:66.666%; @include silent-relative; }
+
+
+    /**
+     * Quarters
+     */
+    #{$prefix}one-quarter         { margin-left:25%; @include silent-relative; }
+    #{$prefix}two-quarters        { @extend #{$prefix}one-half; }
+    #{$prefix}three-quarters      { margin-left:75%; @include silent-relative; }
+
+
+    /**
+     * Fifths
+     */
+    #{$prefix}one-fifth           { margin-left:20%; @include silent-relative; }
+    #{$prefix}two-fifths          { margin-left:40%; @include silent-relative; }
+    #{$prefix}three-fifths        { margin-left:60%; @include silent-relative; }
+    #{$prefix}four-fifths         { margin-left:80%; @include silent-relative; }
+
+
+    /**
+     * Sixths
+     */
+    #{$prefix}one-sixth           { margin-left:16.666%; @include silent-relative; }
+    #{$prefix}two-sixths          { @extend #{$prefix}one-third; }
+    #{$prefix}three-sixths        { @extend #{$prefix}one-half; }
+    #{$prefix}four-sixths         { @extend #{$prefix}two-thirds; }
+    #{$prefix}five-sixths         { margin-left:83.333%; @include silent-relative; }
+
+
+    /**
+     * Eighths
+     */
+    #{$prefix}one-eighth          { margin-left:12.5%; @include silent-relative; }
+    #{$prefix}two-eighths         { @extend #{$prefix}one-quarter; }
+    #{$prefix}three-eighths       { margin-left:37.5%; @include silent-relative; }
+    #{$prefix}four-eighths        { @extend #{$prefix}one-half; }
+    #{$prefix}five-eighths        { margin-left:62.5%; @include silent-relative; }
+    #{$prefix}six-eighths         { @extend #{$prefix}three-quarters; }
+    #{$prefix}seven-eighths       { margin-left:87.5%; @include silent-relative; }
+
+
+    /**
+     * Tenths
+     */
+    #{$prefix}one-tenth           { margin-left:10%; @include silent-relative; }
+    #{$prefix}two-tenths          { @extend #{$prefix}one-fifth; }
+    #{$prefix}three-tenths        { margin-left:30%; @include silent-relative; }
+    #{$prefix}four-tenths         { @extend #{$prefix}two-fifths; }
+    #{$prefix}five-tenths         { @extend #{$prefix}one-half; }
+    #{$prefix}six-tenths          { @extend #{$prefix}three-fifths; }
+    #{$prefix}seven-tenths        { margin-left:70%; @include silent-relative; }
+    #{$prefix}eight-tenths        { @extend #{$prefix}four-fifths; }
+    #{$prefix}nine-tenths         { margin-left:90%; @include silent-relative; }
+
+
+    /**
+     * Twelfths
+     */
+    #{$prefix}one-twelfth         { margin-left:8.333%; @include silent-relative; }
+    #{$prefix}two-twelfths        { @extend #{$prefix}one-sixth; }
+    #{$prefix}three-twelfths      { @extend #{$prefix}one-quarter; }
+    #{$prefix}four-twelfths       { @extend #{$prefix}one-third; }
+    #{$prefix}five-twelfths       { margin-left:41.666%; @include silent-relative; }
+    #{$prefix}six-twelfths        { @extend #{$prefix}one-half; }
+    #{$prefix}seven-twelfths      { margin-left:58.333%; @include silent-relative; }
+    #{$prefix}eight-twelfths      { @extend #{$prefix}two-thirds; }
+    #{$prefix}nine-twelfths       { @extend #{$prefix}three-quarters; }
+    #{$prefix}ten-twelfths        { @extend #{$prefix}five-sixths; }
+    #{$prefix}eleven-twelfths     { margin-left:91.666%; @include silent-relative; }
+}
+
+@if $push {
+
+    /**
+     * Not a particularly great selector, but the DRYest way to do things.
+     */
+    [class*="push--"] { position:relative; }
+
+    @include push-setup;
+
+    @if $responsive {
+        @each $name in $breakpoint-has-push {
+            @include respond-to($name) {
+                @include push-setup('#{$name}--');
+            }
+        }
+    }
+
+}

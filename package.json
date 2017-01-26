@@ -1,0 +1,10 @@
+{
+  "name": "memex",
+  "version": "1.0.0",
+  "description": "memex",
+  "author": "Meme Bros",
+  "license": "ISC",
+  "dependencies": {
+    "resemblejs": "^2.2.3"
+  }
+}
