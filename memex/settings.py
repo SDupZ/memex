@@ -18,6 +18,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'memex.dev',
+    'memex.sdup.nz',
 ]
 
 
