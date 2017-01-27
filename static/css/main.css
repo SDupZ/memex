@@ -2525,7 +2525,8 @@ body {
   box-sizing: content-box;
   display: block;
   height: 0;
-  margin: 20px 0; }
+  margin: 0;
+  padding: 20px; }
 
 .footer {
   text-align: center;
@@ -2538,10 +2539,9 @@ body {
 .footer__item-group {
   display: inline-block;
   text-align: left;
-  width: 20%; }
+  width: 30%; }
   .footer__item-group--right {
     text-align: right;
-    width: 30%;
     margin-left: auto; }
 
 .footer__logo {
