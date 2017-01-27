@@ -5,6 +5,6 @@
   "author": "Meme Bros",
   "license": "ISC",
   "dependencies": {
-    "resemblejs": "^2.2.3"
+    "chart.js": "^2.4.0"
   }
 }

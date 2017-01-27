@@ -1,5 +1,5 @@
 .jumbotron {
-    background-color: $white;
+    background-color: $test;
 	margin-bottom: 0;
 	position: relative;
 
@@ -10,7 +10,7 @@
 	justify-content: center;
 
 	p {
-        color: $black;
+        color: $white;
 		margin-top: 0;
 	}
 }
