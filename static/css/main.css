@@ -2560,6 +2560,28 @@ body {
   -webkit-filter: grayscale(0.6);
   /* Google Chrome, Safari 6+ & Opera 15+ */ }
 
+input, textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none; }
+
+input[type="text"],
+input[type="email"],
+textarea {
+  background: white;
+  border: 1px solid #e5e5e5;
+  font-size: 1.0em;
+  padding: .8em .5em;
+  border-radius: 5px;
+  color: #72808E; }
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  background: #fff;
+  border: 1px solid #0091EA; }
+
 .header {
   display: flex;
   align-items: center;
@@ -2905,3 +2927,7 @@ p {
   text-align: center;
   padding-top: 60px;
   padding-bottom: 100px; }
+
+.homepage__search-bar {
+  margin: 0 auto;
+  max-width: 600px; }
