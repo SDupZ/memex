@@ -10,8 +10,51 @@
         </div>
 
         <div class="container">
+            <div class="grid grid--center">
+                <div class="grid__item desktop--one-third">
+                    <div class="base-card">
+                        <div class="metrics-tile__section">
+                            <div class="heading__3">Latest Trends</div>
+                        </div>
+
+                        <hr class="divider-horizontal"/>
+
+                        <div class="metrics-tile__section">
+                            <p>Bad luck brian</p>
+                            <p>Title</p>
+                        </div>
+
+                        <hr class="divider-horizontal"/>
+
+                        <div class="metrics-tile__section">
+                            <p>Title</p>
+                            <p>Title</p>
+                        </div>
+
+                        <hr class="divider-horizontal"/>
+
+                        <div class="metrics-tile__section">
+                            <p>Title</p>
+                            <p>Title</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="grid__item desktop--two-thirds">
+                    <div class="base-card metrics-tile__section">
+                        <canvas id="myChart" width="300" height="200"></canvas>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
 
 {% endblock main-content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="/static/js/src/handleHomepageCharts.js"></script>
+{% endblock scripts %}
