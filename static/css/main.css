@@ -2454,8 +2454,6 @@ html {
 body {
   margin: 0;
   font-family: 'Oxygen', sans-serif; }
-  body p {
-    font: normal 15px/1.9em 'Merriweather', Georgia, serif; }
 
 .container {
   max-width: 1140px;
@@ -2483,6 +2481,31 @@ body {
 
 .display-none {
   display: none; }
+
+.up-arrow, .down-arrow, .left-arrow, .right-arrow {
+  border-bottom: 2px solid #0091EA;
+  border-left: 2px solid #0091EA;
+  height: 10px;
+  width: 10px;
+  display: inline-block; }
+
+.up-arrow {
+  transform: rotate(135deg); }
+  .up-arrow--trends {
+    border-bottom: 5px solid #49a942;
+    border-left: 5px solid #49a942; }
+
+.down-arrow {
+  transform: rotate(-45deg); }
+  .down-arrow--trends {
+    border-bottom: 5px solid #c12828;
+    border-left: 5px solid #c12828; }
+
+.left-arrow {
+  transform: rotate(45deg); }
+
+.right-arrow {
+  transform: rotate(-135deg); }
 
 .blog-card {
   margin: 20px;
@@ -2559,6 +2582,23 @@ body {
   /* Microsoft Edge and Firefox 35+ */
   -webkit-filter: grayscale(0.6);
   /* Google Chrome, Safari 6+ & Opera 15+ */ }
+
+.trends--positive, .trends--negative, .trends--title, .trends--score {
+  font-size: 1.5em;
+  margin: 0; }
+
+.trends--positive {
+  color: #49a942; }
+
+.trends--negative {
+  color: #c12828; }
+
+.trends--title {
+  font-size: 1.3em; }
+
+.trends--score {
+  font-size: 1.0em;
+  margin-top: 10px; }
 
 input, textarea {
   display: block;
@@ -2873,7 +2913,18 @@ div.menu li.animate {
   transition-delay: 0.2s; }
 
 .metrics-tile__section {
-  padding: 26px; }
+  padding: 26px;
+  display: block;
+  text-decoration: none;
+  color: #000; }
+  .metrics-tile__section:hover {
+    background: #f9f9f9; }
+
+.metrics-tile__item-container {
+  display: inline-block;
+  width: 50%; }
+  .metrics-tile__item-container--right {
+    text-align: right; }
 
 p {
   margin: 12px 0 12px 0;
@@ -2885,6 +2936,8 @@ p {
   padding-left: 26px;
   padding-right: 26px;
   padding-bottom: 26px; }
+  .blog__content p {
+    font: normal 15px/1.9em 'Merriweather', Georgia, serif; }
 
 .page {
   overflow: auto;

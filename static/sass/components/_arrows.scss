@@ -1,0 +1,35 @@
+%base-arrow {
+    border-bottom: 2px solid $primaryAccent;
+    border-left: 2px solid $primaryAccent;
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+}
+
+.up-arrow {
+    @extend %base-arrow;
+    transform: rotate(135deg);
+    &--trends {
+        border-bottom: 5px solid $positiveMovement;
+        border-left: 5px solid $positiveMovement;
+    }
+}
+
+.down-arrow {
+    @extend %base-arrow;
+    transform: rotate(-45deg);
+    &--trends {
+        border-bottom: 5px solid $negativeMovement;
+        border-left: 5px solid $negativeMovement;
+    }
+}
+
+.left-arrow {
+    @extend %base-arrow;
+    transform: rotate(45deg);
+}
+
+.right-arrow {
+    @extend %base-arrow;
+    transform: rotate(-135deg);
+}

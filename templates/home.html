@@ -17,31 +17,17 @@
             <div class="grid grid--center">
                 <div class="grid__item desktop--one-third">
                     <div class="base-card">
-                        <div class="metrics-tile__section">
-                            <div class="heading__3">Latest Trends</div>
-                        </div>
+                        {% spaceless %}
+                        <a href="#" class="metrics-tile__section">
+                            <div class="heading__3">Latest Trends (Daily)</div>
+                        </a>
 
-                        <hr class="divider-horizontal"/>
+                        {% include 'includes/_metrics-tile__section.html' with title="Bad luck Brian" score=4.35 percentage=-3.56 %}
+                        {% include 'includes/_metrics-tile__section.html' with title="Pepe" score=2.35 percentage=2.56 %}
+                        {% include 'includes/_metrics-tile__section.html' with title="Cash me outside" score=9.35 percentage=-5.52 %}
+                        {% include 'includes/_metrics-tile__section.html' with title="King Arthur" score=8.35 percentage=134.42 %}
 
-                        <div class="metrics-tile__section">
-                            <p>Bad luck brian</p>
-                            <p>Title</p>
-                        </div>
-
-                        <hr class="divider-horizontal"/>
-
-                        <div class="metrics-tile__section">
-                            <p>Title</p>
-                            <p>Title</p>
-                        </div>
-
-                        <hr class="divider-horizontal"/>
-
-                        <div class="metrics-tile__section">
-                            <p>Title</p>
-                            <p>Title</p>
-                        </div>
-
+                        {% endspaceless %}
                     </div>
                 </div>
 

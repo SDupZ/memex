@@ -1,3 +1,18 @@
 .metrics-tile__section {
     padding: 26px;
+    display: block;
+    text-decoration: none;
+    color: $black;
+    &:hover {
+        background: $grey--lighter-4;
+    }
+}
+
+.metrics-tile__item-container {
+    display: inline-block;
+    width: 50%;
+
+    &--right {
+        text-align: right;
+    }
 }

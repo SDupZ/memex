@@ -1,0 +1,12 @@
+<hr class="divider-horizontal"/>
+
+<a href="#" class="metrics-tile__section">
+    <div class="metrics-tile__item-container">
+        <p class="trends--title">{{ title }}</pc>
+        <p class="trends--score">Score: {{ score }}</p>
+    </div>
+    <div class="metrics-tile__item-container metrics-tile__item-container--right">
+        <div class="{% if percentage > 0 %}up-arrow up-arrow--trends {% else %}down-arrow down-arrow--trends {% endif %}"></div>
+        <p class="{% if percentage > 0 %}trends--positive {% else %}trends--negative {% endif %}">{% if percentage > 0 %}+{% endif %}{{ percentage }}%</p>
+    </div>
+</a>

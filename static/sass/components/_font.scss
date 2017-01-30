@@ -1,0 +1,25 @@
+%trends {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.trends--positive {
+    @extend %trends;
+    color: $positiveMovement;
+}
+
+.trends--negative {
+    @extend %trends;
+    color: $negativeMovement;
+}
+
+.trends--title {
+    @extend %trends;
+    font-size: 1.3em;
+}
+
+.trends--score {
+    @extend %trends;
+    font-size: 1.0em;
+    margin-top: 10px;
+}
