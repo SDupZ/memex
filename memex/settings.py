@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Custom
     'default',
     'blog',
+    'memes',
 ]
 
 MIDDLEWARE = [
