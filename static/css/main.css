@@ -2323,7 +2323,7 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--spin .hamburger-inner::before {
-    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
+    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
   .hamburger--spin .hamburger-inner::after {
     transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2336,7 +2336,7 @@
     background-color: #fff;
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
+    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
   .hamburger--spin.is-active .hamburger-inner::after {
     background-color: #fff;
     bottom: 0;
@@ -2350,7 +2350,7 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--spin-r .hamburger-inner::before {
-    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
+    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
   .hamburger--spin-r .hamburger-inner::after {
     transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2361,7 +2361,7 @@
   .hamburger--spin-r.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
+    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
   .hamburger--spin-r.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
@@ -2374,7 +2374,7 @@
   transition-duration: 0.1s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--squeeze .hamburger-inner::before {
-    transition: top 0.1s 0.14s ease, opacity 0.1s ease; }
+    transition: top 0.1s 0.14s ease, opacity 0.1s ease; }
   .hamburger--squeeze .hamburger-inner::after {
     transition: bottom 0.1s 0.14s ease, transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2385,7 +2385,7 @@
   .hamburger--squeeze.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease, opacity 0.1s 0.14s ease; }
+    transition: top 0.1s ease, opacity 0.1s 0.14s ease; }
   .hamburger--squeeze.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
@@ -2984,3 +2984,6 @@ p {
 .homepage__search-bar {
   margin: 0 auto;
   max-width: 600px; }
+
+.meme-page__chart-container {
+  height: 300px; }
