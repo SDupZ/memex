@@ -2323,7 +2323,7 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--spin .hamburger-inner::before {
-    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
+    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
   .hamburger--spin .hamburger-inner::after {
     transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2336,7 +2336,7 @@
     background-color: #fff;
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
+    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
   .hamburger--spin.is-active .hamburger-inner::after {
     background-color: #fff;
     bottom: 0;
@@ -2350,7 +2350,7 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--spin-r .hamburger-inner::before {
-    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
+    transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in; }
   .hamburger--spin-r .hamburger-inner::after {
     transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2361,7 +2361,7 @@
   .hamburger--spin-r.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
+    transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out; }
   .hamburger--spin-r.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
@@ -2374,7 +2374,7 @@
   transition-duration: 0.1s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--squeeze .hamburger-inner::before {
-    transition: top 0.1s 0.14s ease, opacity 0.1s ease; }
+    transition: top 0.1s 0.14s ease, opacity 0.1s ease; }
   .hamburger--squeeze .hamburger-inner::after {
     transition: bottom 0.1s 0.14s ease, transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -2385,7 +2385,7 @@
   .hamburger--squeeze.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.1s ease, opacity 0.1s 0.14s ease; }
+    transition: top 0.1s ease, opacity 0.1s 0.14s ease; }
   .hamburger--squeeze.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
@@ -2536,11 +2536,12 @@ body {
     margin: 0 auto; }
 
 .base-card {
-  overflow: auto;
   background: white;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
-  margin: 40px auto; }
+  margin-bottom: 20px; }
+  .base-card--top {
+    margin-top: 20px; }
 
 .divider-vertical {
   height: 18px;
@@ -2696,6 +2697,18 @@ textarea:focus {
   .heading__page--white {
     color: #fff; }
 
+.heading__1 {
+  display: block;
+  font-size: 2em;
+  font-weight: 500;
+  color: #000; }
+
+.heading__2 {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #000; }
+
 .heading__3 {
   display: block;
   font-size: 1.5em;
@@ -2739,7 +2752,7 @@ textarea:focus {
 
 .jumbotron {
   background-color: #2c3343;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   position: relative;
   height: 500px;
   display: flex;
@@ -2986,4 +2999,11 @@ p {
   max-width: 600px; }
 
 .meme-page__chart-container {
-  height: 300px; }
+  height: 300px;
+  padding: 26px; }
+
+.meme-tile__container {
+  padding: 26px; }
+
+.meme-preview {
+  width: 100%; }

@@ -7,17 +7,93 @@
 {% endblock %}
 
 {% block main-content %}
+{% spaceless %}
     <div class="page">
         <div class="container">
-                <div class="heading__page">
-                    Something
+            <div class="grid grid--center">
+                <div class="grid__item">
+                    <div class="base-card base-card--top">
+                        <div class="grid grid--center">
+                            <div class="grid__item mobile--one-half tablet--two-thirds">
+                                <div class="meme-tile__container">
+                                    <div class="heading__1">King Arthur (KA)</div>
+                                    <div class="heading__3">1.54</div>
+                                </div>
+                            </div>
+
+                            <div class="grid__item mobile--one-half tablet--one-third">
+                                <img class="meme-preview" src="{% static 'img/temp/meme2.jpg' %}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__item desktop--two-thirds">
+                    <div class="base-card">
+                        <div class="meme-page__chart-container">
+                                <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__item desktop--one-third">
+                    <div class="base-card">
+                        <a href="#" class="metrics-tile__section">
+                            <div class="heading__3">Latest Trends (Daily)</div>
+                        </a>
+                        {% include 'includes/_metrics-tile__section.html' with title="Bad luck Brian" score=4.35 percentage=-3.56 %}
+                        {% include 'includes/_metrics-tile__section.html' with title="Pepe" score=2.35 percentage=2.56 %}
+                    </div>
                 </div>
 
-                <div class="meme-page__chart-container">
-                        <canvas id="myChart"></canvas>
+                <div class="grid__item desktop--one-third">
+                    <div class="base-card">
+                        <div class="meme-tile__container">
+                            <div class="heading__3">Daily Volume</div>
+                            <p class="trends--score">21,703 Reddit Mentions</p>
+                            <p class="trends--score">67,905 Reddit Images</p>
+                            <p class="trends--score">83,103 Twitter Mentions</p>
+                            <p class="trends--score">48,208 Twitter Images</p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="grid__item desktop--one-third">
+                    <div class="base-card">
+                        <div class="meme-tile__container">
+                            <div class="heading__3">Performance</div>
+                            <p class="trends--score">High: 1.800</p>
+                            <p class="trends--score">Low:  1.400</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__item desktop--one-third">
+                    <div class="base-card">
+                        <div class="meme-tile__container">
+                            <div class="heading__3">Notable Posts</div>
+                            <p class="trends--score">Most recent post: <a href="#">something.com</a></p>
+                            <p class="trends--score">Highest rated post: <a href="#">something.com</a></p>
+                            <p class="trends--score">Something else: <a href="#">something.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__item">
+                    <div class="base-card">
+                        <div class="meme-tile__container">
+                            <div class="heading__3">History</div>
+                            <p>
+                              Ancient Aliens is a series of image macros based on History Channel’s TV series with the same name starring alien expert Giorgio A. Tsoukalos, who often tends to explain inexplicable phenomena as the direct result of aliens or extraterrestrials being on Earth. In a somewhat similar fashion to Bill O’Reilly’s You Can’t Explain That series, the Ancient Aliens macros exaggerate Tsoukalos’ beliefs to such an extent that they become humourous.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
+{% endspaceless %}
 {% endblock main-content %}
 
 {% block scripts %}
