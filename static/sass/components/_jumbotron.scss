@@ -1,10 +1,10 @@
 .jumbotron {
+    overflow: auto;
     background-color: $test;
   	margin-bottom: 20px;
   	position: relative;
 
     height: 500px;
-  	display: flex;
   	text-align: center;
   	flex-direction: column;
   	justify-content: center;
