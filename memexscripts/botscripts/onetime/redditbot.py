@@ -5,7 +5,7 @@ import re
 reddit = praw.Reddit('bot1')
 
 
-subreddit = reddit.subreddit("memeeconomy")
+subreddit = reddit.subreddit("adviceanimals")
 keyword = 'pepe'
 
 print("===========BEGIN==============")
