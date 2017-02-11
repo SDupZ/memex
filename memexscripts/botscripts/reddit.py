@@ -56,7 +56,8 @@ print("===========BEGIN==============")
 
 reddit_data = []
 
-for submission in subreddit.hot(limit=10):
+for submission in subreddit.hot(limit=30):
+    pdb.set_trace()
     if not (submission.stickied):
         print submission.title
         try:
@@ -73,7 +74,8 @@ for submission in subreddit.hot(limit=10):
                 'title': submission.title,
                 'subreddit': str(submission.subreddit),
                 'subreddit_id': submission.subreddit_id,
-                'permalink': submission.permalink
+                'permalink': submission.permalink,
+                'created': submission.created
             })
         except Exception as e:
             print "ERRUH " + str(e) + " : " + str(submission.title)
