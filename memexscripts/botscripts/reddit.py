@@ -17,7 +17,10 @@ indicoio.config.api_key = 'a43cdf55368bc533dc45c5686188466c'
 # meme_url = "https://i.reddituploads.com/93d87c8ec9774cbf899f9bbd0ebdb56f?fit=max&h=1536&w=1536&s=dd934cefffd3913d2c65a3ca74fbe656"
 # meme_url = "https://i.redd.it/srr4dxlrrsey.jpg"
 # meme_url = "https://media.makeameme.org/created/buys-her-a-ryov21.jpg"
-meme_url = "https://i.imgur.com/y9c2RwE.png"
+# meme_url = "https://i.imgur.com/y9c2RwE.png"
+# meme_url = "http://i.memecaptain.com/gend_images/nCv-Rw.jpg"
+# meme_url = "https://i.imgur.com/XbTq6MD.jpg"
+meme_url = "http://e.lvme.me/mqk598h.jpg"
 
 # reddit = praw.Reddit('bot1')
 # subreddit = reddit.subreddit("adviceanimals")
@@ -40,17 +43,6 @@ def getMostLikelyMeme(image):
         similarity = 1 - spatial.distance.cosine(dataSetI, imgdata)
         results.append(similarity)
     return results
-
-
-# Returns a value between 0 and 1 which is the similarity constant
-# between the two images that were passed to the function
-def compareTwoImages(image0, image1):
-    # single example
-    dataSetI = indicoio.image_features(image0)
-    dataSetII = indicoio.image_features(image1)
-    similarity = 1 - spatial.distance.cosine(dataSetI, dataSetII)
-    return similarity
-
 
 
 # Imgur links dont link to the image directly. They link to the page. Need to

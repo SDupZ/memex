@@ -7,13 +7,9 @@ import json
 import urllib
 import pdb
 
-with open('features.json') as data_file:
+with open('memedbfeatures.json') as data_file:
     data = json.load(data_file)
+    # for meme in data['images']:
+    #     print meme['src']
 
-pdb.set_trace()
-# totalCount = data['images'].__len__()
-# i = 0
-# for image in data['images']:
-#     i += 1
-#     urllib.urlretrieve(baseURL + image['src'], "images/memes/" + image['src'])
-#     print "Downloaded " + str(i) + " of " + str(totalCount)
+    pdb.set_trace()
