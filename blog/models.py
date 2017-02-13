@@ -3,6 +3,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 
+
 class BlogPost(models.Model):
     created = models.DateTimeField(db_index=True, auto_now_add=True)
     modified = models.DateTimeField(db_index=True, auto_now=True)

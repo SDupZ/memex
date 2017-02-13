@@ -33,3 +33,26 @@ class Job(models.Model):
             from .tasks import TASK_MAPPING
             task = TASK_MAPPING[self.type]
             task.delay(job_id=self.id, n=self.argument)
+
+
+class Meme(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class RedditPost(models.Model):
+    submission_id = models.CharField(max_length=20)
+
+    # TODO Foreign key reference to actual meme
+    likely_meme = models.CharField(max_length=50)
+
+    image_similarity = models.DecimalField(decimal_places=4, max_digits=8)
+    image_url = models.URLField()
+    gilded = models.BooleanField(default=False)
+    score = models.IntegerField()
+    title = models.CharField(max_length=400)
+    subreddit = models.CharField(max_length=50)
+    subreddit_id = models.CharField(max_length=20)
+    permalink = models.URLField()
+    submission_created = models.DateTimeField()
+    date_crawled = models.DateTimeField()
+    author = models.CharField(max_length=50)

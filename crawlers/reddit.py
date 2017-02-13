@@ -1,13 +1,10 @@
 #!/usr/bin/python
 import praw
-import re
 import indicoio
-import pdb
 import json
-from os import listdir
-from os.path import isfile, join
+import pdb
+from datetime import datetime
 from scipy import spatial
-
 from imageLibrary import parse_reddit_url, generate_probabilities
 
 
@@ -24,12 +21,12 @@ for submission in subreddit.hot(limit=30):
         try:
             meme_url = parse_reddit_url(submission.url)
             result = generate_probabilities(meme_url)
-            highest_similarity = max(result, key=lambda i: result[i])
+            likely_meme = max(result, key=lambda i: result[i])
             reddit_data.append(
                 {
                     'id': submission.id,
-                    'meme': highest_similarity,
-                    'similarity': result[highest_similarity],
+                    'meme': likely_meme,
+                    'similarity': result[likely_meme],
                     'url': submission.url,
                     'gilded': submission.gilded,
                     'score': submission.score,
@@ -37,7 +34,9 @@ for submission in subreddit.hot(limit=30):
                     'subreddit': str(submission.subreddit),
                     'subreddit_id': submission.subreddit_id,
                     'permalink': submission.permalink,
-                    'created': submission.created
+                    'submission_created': submission.created,
+                    'date_crawled': datetime.now(),
+                    'author': submission.author,
                 })
         except Exception as e:
             print ("ERRUH " + str(e) + " : " + str(submission.title))

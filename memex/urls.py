@@ -6,13 +6,14 @@ from rest_framework import routers
 from django.conf import settings
 from default.views import home
 from blog.views import blog, blogs_list
-from memes.views import meme, JobViewSet
+from memes.views import meme, JobViewSet, RedditPostViewSet
 
 from filer.models import Folder, ThumbnailOption
 
 router = routers.DefaultRouter()
 # register job endpoint in the router
 router.register(r'jobs', JobViewSet)
+router.register(r'redditposts', RedditPostViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
