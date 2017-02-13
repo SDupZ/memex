@@ -42,43 +42,47 @@ def parse_reddit_url(url):
 # meme_url = "http://i.memecaptain.com/gend_images/nCv-Rw.jpg"
 # meme_url = "https://i.imgur.com/XbTq6MD.jpg"
 # meme_url = "http://ichef.bbci.co.uk/images/ic/704xn/p03wv8tb.jpg"
+meme_url = "http://starsingers.net/wp-content/uploads/images/Xzibit.jpg"
+
+result = generate_probabilities(meme_url)
+highest_similarity = max(result, key=lambda i: result[i])
+
+print ("Most likely meme is: " + str(highest_similarity) + " with probability: " + str(result[highest_similarity]))
+
+
+
+
+
+# reddit = praw.Reddit('bot1')
+# subreddit = reddit.subreddit("adviceanimals")
 #
-# result = generate_probabilities(meme_url)
-# highest_similarity = max(result, key=lambda i: result[i])
+# print("===========BEGIN==============")
 #
-# print ("Most likely meme is: " + str(highest_similarity) + " with probability: " + str(result[highest_similarity]))
-
-
-reddit = praw.Reddit('bot1')
-subreddit = reddit.subreddit("adviceanimals")
-
-print("===========BEGIN==============")
-
-reddit_data = []
-
-for submission in subreddit.hot(limit=30):
-    pdb.set_trace()
-    if not (submission.stickied):
-        print submission.title
-        try:
-            meme_url = parse_reddit_url(submission.url)
-            result = generate_probabilities(meme_url)
-            highest_similarity = max(result, key=lambda i: result[i])
-            reddit_data.append(
-            {   'id': submission.id,
-                'meme': highest_similarity,
-                'similarity':result[highest_similarity],
-                'url': submission.url,
-                'gilded': submission.gilded,
-                'score': submission.score,
-                'title': submission.title,
-                'subreddit': str(submission.subreddit),
-                'subreddit_id': submission.subreddit_id,
-                'permalink': submission.permalink,
-                'created': submission.created
-            })
-        except Exception as e:
-            print "ERRUH " + str(e) + " : " + str(submission.title)
-
-json.dump(reddit_data, open('results.json', 'wb'), indent=4, sort_keys=True)
-print("===========DONE==============")
+# reddit_data = []
+#
+# for submission in subreddit.hot(limit=30):
+#     pdb.set_trace()
+#     if not (submission.stickied):
+#         print submission.title
+#         try:
+#             meme_url = parse_reddit_url(submission.url)
+#             result = generate_probabilities(meme_url)
+#             highest_similarity = max(result, key=lambda i: result[i])
+#             reddit_data.append(
+#             {   'id': submission.id,
+#                 'meme': highest_similarity,
+#                 'similarity':result[highest_similarity],
+#                 'url': submission.url,
+#                 'gilded': submission.gilded,
+#                 'score': submission.score,
+#                 'title': submission.title,
+#                 'subreddit': str(submission.subreddit),
+#                 'subreddit_id': submission.subreddit_id,
+#                 'permalink': submission.permalink,
+#                 'created': submission.created
+#             })
+#         except Exception as e:
+#             print "ERRUH " + str(e) + " : " + str(submission.title)
+#
+# json.dump(reddit_data, open('results.json', 'wb'), indent=4, sort_keys=True)
+# print("===========DONE==============")

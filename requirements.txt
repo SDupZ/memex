@@ -11,3 +11,7 @@ celery
 djangorestframework
 redis
 praw
+requests
+indicoio
+scipy
+numpy
