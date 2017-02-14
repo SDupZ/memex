@@ -1,12 +1,6 @@
 from rest_framework import serializers
 
-from .models import Job, RedditPost
-
-
-class JobSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Job
-        fields = '__all__'
+from .models import RedditPost
 
 
 class RedditPostSerializer(serializers.HyperlinkedModelSerializer):

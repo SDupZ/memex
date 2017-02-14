@@ -1,13 +1,15 @@
 import indicoio
 import json
 from scipy import spatial
+import os
 
 indicoio.config.api_key = 'a43cdf55368bc533dc45c5686188466c'
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Return an array with the most likely meme and the likelyness
 def generate_probabilities(image):
-    with open('memedbfeatures.json') as data_file:
+    with open(base_dir + '/reddit/memedbfeatures.json') as data_file:
         data = json.load(data_file)
         dataSetI = indicoio.image_features(image)
         results = {}
