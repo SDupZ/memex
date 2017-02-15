@@ -2995,8 +2995,19 @@ p {
   padding-bottom: 100px; }
 
 .homepage__search-bar {
-  margin: 0 auto;
+  margin: 0 60px;
   max-width: 600px; }
+  @media only screen and (min-width: 768px) {
+    .homepage__search-bar {
+      margin: 0 auto; } }
+
+.homepage_header-title {
+  max-width: 600px; }
+  .homepage_header-title__text {
+    display: inline-block;
+    font-size: 2em; }
+  .homepage_header-title .pepe-face {
+    display: inline-block; }
 
 .meme-page__chart-container {
   height: 300px;

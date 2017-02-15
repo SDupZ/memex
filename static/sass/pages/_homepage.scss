@@ -49,6 +49,24 @@
 }
 
 .homepage__search-bar {
-		margin: 0 auto;
-		max-width: 600px;
+		margin: 0 60px;
+        max-width: 600px;
+
+        @include respond-to(tablet) {
+
+            margin: 0 auto;
+        }
+}
+
+.homepage_header-title {
+    max-width: 600px;
+
+    &__text {
+        display: inline-block;
+        font-size: 2em;
+    }
+
+    .pepe-face {
+        display: inline-block;
+    }
 }
