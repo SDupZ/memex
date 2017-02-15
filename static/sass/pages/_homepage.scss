@@ -1,3 +1,5 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
 .homepage-section-leaving-soon {
 	padding-top: 60px;
 	padding-bottom: 100px;
@@ -51,6 +53,23 @@
 .homepage__search-bar {
 		margin: 0 60px;
         max-width: 600px;
+        min-width: 270px;
+        position: relative;
+
+        input {
+            // text-indent: 176px;
+            text-align: center;
+            font-size: 22px;
+            padding: 10px 12px;
+        }
+
+        .fa-search {
+            position: absolute;
+            font-size: 22px;
+            top: 12px;
+            left: 20px;
+            color: #72808E;
+        }
 
         @include respond-to(tablet) {
 
