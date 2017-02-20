@@ -11,7 +11,7 @@ from imageLibrary import generate_probabilities, parse_reddit_url
 # meme_url = "http://i.memecaptain.com/gend_images/nCv-Rw.jpg"
 # meme_url = "https://i.imgur.com/XbTq6MD.jpg"
 # meme_url = "http://ichef.bbci.co.uk/images/ic/704xn/p03wv8tb.jpg"
-meme_url = "http://starsingers.net/wp-content/uploads/images/Xzibit.jpg"
+meme_url = "https://pbs.twimg.com/media/C3v3w5uWQAAYY4U.jpg"
 
 result = generate_probabilities(meme_url)
 highest_similarity = max(result, key=lambda i: result[i])

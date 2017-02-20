@@ -11,12 +11,13 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def generate_probabilities(image):
     with open(base_dir + '/reddit/memedbfeatures.json') as data_file:
         data = json.load(data_file)
-        dataSetI = indicoio.image_features(image)
+        target_features = indicoio.image_features(image)
         results = {}
-        for meme in data['images']:
-            for idx, imgdata in enumerate(meme['features']):
-                similarity = 1 - spatial.distance.cosine(dataSetI, imgdata)
-                results[meme['src'][idx]] = similarity
+        for meme in data['memes']:
+            for image in data['memes'][meme]['images'].keys():
+                imgdata = data['memes'][meme]['images'][image]
+                similarity = 1 - spatial.distance.cosine(target_features, imgdata)
+                results[image] = similarity
         return results
 
 
