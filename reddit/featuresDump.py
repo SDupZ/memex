@@ -16,36 +16,25 @@ size = all_memes.__len__()
 with open('memedbfeatures.json') as data_file:
     data = json.load(data_file)
 
+    new_memes = []
     # For each image that is in the images folder
     for idx, image in enumerate(all_memes):
         print (str(idx + 1) + " of " + str(size) + " " + image)
         found = False
-        indexed = False
         # Look for an associated memesdb entry
-        for meme in data['images']:
-            if (image in meme['src']):
+        for meme in data['memes']:
+            if (image in data['memes'][meme]['images'].keys()):
                 found = True
-                if (meme.has_key("features") and meme['src'].__len__() == meme['features'].__len__()):
-                    pass
-                    # print (meme['title'] + " has already been indexed.")
-                else:
-                    features = []
-                    img = ('memes/' + image)
-                    features.append(indicoio.image_features(img))
-                    meme['features'].append(features)
                 break
 
         # Didn't find any entries
-        if (found == False):
-            print ("-----New Meme Found: " + image)
-            title = raw_input('Enter the name for this meme: ')
-            print ('Enter space deliminated keywords for this meme: ')
-            keywords = raw_input()
-            data['images'].append({
-                "title": title,
-                "keywords": keywords,
-                "src": [image],
-                "features": []
-            })
+        if (not found):
+            new_memes.append(image)
 
-    json.dump(data, open('memedbfeatures.json', 'wb'))
+    for new_meme in new_memes:
+        print ("-----New Meme Found: " + new_meme)
+        title = input('Enter the name for this meme: ')
+        img = ('memes/' + new_meme)
+        features = indicoio.image_features(img)
+        data['memes'][title]['images'].update({new_meme: features})
+    json.dump(data, open('memedbfeatures.json', 'w'))
