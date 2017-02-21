@@ -1,6 +1,6 @@
 # Memex
 
-### To run the project 14/02/2017
+### To run the project 22/02/2017
 
 `docker-compose build`
 `docker-compose up`
@@ -25,7 +25,7 @@ https://github.com/sass/node-sass/blob/master/README.md
 `psql -Udocker {% database_name | local %} < latest_database_backup.sql`
 
 <!-- Outdated Information  -->
-### New Container
+### OUTDATED INFORMATION
 
 <!-- Windows -->
 `docker run -it -v c:/Users/Simon/development/memex:/srv/www/memex/memex -p 8000-8050:80 -e VIRTUAL_HOST=memex.dev --name memex sdupz/memex`
