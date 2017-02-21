@@ -4,7 +4,7 @@ from datetime import datetime
 from scipy import spatial
 from .imageLibrary import parse_reddit_url, generate_probabilities
 from memex.celeryconf import app
-from .models import RedditPost
+from .models import RedditPost, RedditPostSnapshot
 from functools import wraps
 
 client_id = 'B1qHlERNKwBQyQ'
@@ -20,24 +20,34 @@ def get_latest_30_advice_animals():
         if not (submission.stickied):
             print (submission.title)
             try:
-                meme_url = parse_reddit_url(submission.url)
-                result = generate_probabilities(meme_url)
-                likely_meme = max(result, key=lambda i: result[i])
-                post = RedditPost(
-                    submission_id=str(submission.id),
-                    likely_meme=str(likely_meme),
-                    image_similarity=str(result[likely_meme]),
-                    image_url=str(submission.url),
-                    gilded=str(submission.gilded),
-                    score=str(submission.score),
-                    title=str(submission.title),
-                    subreddit=str(submission.subreddit),
-                    subreddit_id=str(submission.subreddit_id),
-                    permalink=str(submission.permalink),
-                    submission_created=str(submission.created),
+                post = RedditPost.objects.filter(submission_id=submission.id)
+                if (post.__len__() > 0):
+                    post = post[0]
+                else:
+                    meme_url = parse_reddit_url(submission.url)
+                    result = generate_probabilities(meme_url)
+                    likely_meme = max(result, key=lambda i: result[i])
+                    post = RedditPost(
+                        submission_id=str(submission.id),
+                        likely_meme=str(likely_meme),
+                        image_similarity=str(result[likely_meme]),
+                        image_url=str(submission.url),
+                        title=str(submission.title),
+                        subreddit=str(submission.subreddit),
+                        subreddit_id=str(submission.subreddit_id),
+                        permalink=str(submission.permalink),
+                        submission_created=str(submission.created),
+                        author=str(submission.author),
+                    )
+                    post.save()
+
+                snapshot = RedditPostSnapshot(
+                    reddit_post=post,
                     date_crawled=str(datetime.now()),
-                    author=str(submission.author),
+                    score=str(submission.score),
+                    gilded=str(submission.gilded)
                 )
-                post.save()
+                snapshot.save()
+
             except Exception as e:
                 print ("ERRUH " + str(e) + " : " + str(submission.title))
