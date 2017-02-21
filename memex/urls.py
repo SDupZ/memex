@@ -4,9 +4,9 @@ from django.views.static import serve
 from rest_framework import routers
 
 from django.conf import settings
-from default.views import home
+from default.views import home, Githook
 from blog.views import blog, blogs_list
-from memes.views import meme, Githook
+from memes.views import meme
 from reddit.views import RedditPostViewSet, RedditPostSnapshotViewSet
 
 from filer.models import Folder, ThumbnailOption
