@@ -19,6 +19,6 @@ class Githook(View):
         raise Http404
 
     def post(self, request, *args, **kwargs):
-	g = git.cmd.Git(git_dir)
+        g = git.cmd.Git(git_dir)
         g.pull()
         return HttpResponse("OK")
