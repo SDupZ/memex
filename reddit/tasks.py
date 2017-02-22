@@ -14,7 +14,7 @@ client_secret = 'syiqQ-fJQakz3f7p7rYiVVcnWYM'
 user_agent = 'PyEng MemeMarket Bot 0.1'
 
 
-@periodic_task(run_every=timedelta(minutes=5))
+@periodic_task(run_every=timedelta(seconds=10))
 def get_hot_submissions_advice_animals():
     reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent)
     sub = "adviceanimals"

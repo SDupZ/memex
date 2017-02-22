@@ -62,6 +62,20 @@ services:
         depends_on:
             - rabbit
 
+    # Celery beat scheduler
+    beat:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: ./run_celery_beat.sh
+        volumes:
+            - .:/srv/www/memex/memex
+        links:
+            - rabbit
+            - redis
+        depends_on:
+            - rabbit
+
 
     # # Flower
     flower:
