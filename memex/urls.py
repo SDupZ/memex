@@ -4,7 +4,7 @@ from django.views.static import serve
 from rest_framework import routers
 
 from django.conf import settings
-from default.views import home, Githook
+from default.views import home
 from blog.views import blog, blogs_list
 from memes.views import meme
 from reddit.views import RedditPostViewSet, RedditPostSnapshotViewSet
@@ -21,7 +21,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^api/', include(router.urls)),
-    url(r'^githook/?$', Githook.as_view(), name='githook'),
 
     url(r'^blog/?$', blogs_list, name='blogs_list'),
     url(r'^blog/(?P<slug>[^/]+)$', blog, name='blog'),

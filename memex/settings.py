@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     # Custom
     'default',
     'blog',
-    'memes',
-    'reddit'
+    'reddit',
+    'memes'
 ]
 
 MIDDLEWARE = [
