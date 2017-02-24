@@ -34,7 +34,7 @@ def get_hot_submissions_advice_animals():
                     result = generate_probabilities(meme_url)
                     likely_meme = max(result, key=lambda i: result[i])
                     post = RedditPost(
-                        submission_id=str(submission.id),
+                        submission_id=submission.id,
                         likely_meme=str(likely_meme),
                         image_similarity=str(result[likely_meme]),
                         image_url=str(submission.url),
