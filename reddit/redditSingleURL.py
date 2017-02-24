@@ -1,5 +1,9 @@
-from imageLibrary import generate_probabilities, parse_reddit_url
+import os
+import sys
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(CURRENT_DIR))
 
+from utils.imageLibrary import generate_probabilities, parse_reddit_url
 # meme_url = "http://i.imgur.com/0OKfI7k.jpg"       # Confession Bear
 # meme_url = "http://i.imgur.com/PRH84l5.jpg"       # Awkward Moment Seal
 # meme_url = "https://i.redd.it/1y5e4ire8vey.png"   # Actual Advice Mallard

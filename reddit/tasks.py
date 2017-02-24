@@ -2,7 +2,7 @@ import praw
 import indicoio
 from datetime import datetime, timedelta
 from scipy import spatial
-from .imageLibrary import parse_reddit_url, generate_probabilities
+from utils.imageLibrary import parse_reddit_url, generate_probabilities
 from .models import RedditPost, RedditPostSnapshot
 from functools import wraps
 from celery.task import periodic_task

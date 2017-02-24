@@ -9,7 +9,7 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Return an array with the most likely meme and the likelyness
 def generate_probabilities(image):
-    with open(base_dir + '/reddit/memedbfeatures.json') as data_file:
+    with open(base_dir + '/utils/memedbfeatures.json') as data_file:
         data = json.load(data_file)
         target_features = indicoio.image_features(image)
         results = {}

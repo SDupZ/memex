@@ -1,15 +1,23 @@
 #!/usr/bin/python
+import os
+import sys
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(CURRENT_DIR))
+
 import praw
 import indicoio
 import json
 import pdb
 from datetime import datetime
 from scipy import spatial
-from imageLibrary import parse_reddit_url, generate_probabilities
+from utils.imageLibrary import parse_reddit_url, generate_probabilities
 
+client_id = 'B1qHlERNKwBQyQ'
+client_secret = 'syiqQ-fJQakz3f7p7rYiVVcnWYM'
+user_agent = 'PyEng MemeMarket Bot 0.1'
 
 def get_latest_30_advice_animals():
-    reddit = praw.Reddit('bot1')
+    reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent)
     subreddit = reddit.subreddit("adviceanimals")
 
     print("===========BEGIN==============")
