@@ -51,7 +51,7 @@
 }
 
 .homepage__search-bar {
-		margin: 0 60px;
+		margin: 20px 20px;
         max-width: 600px;
         min-width: 270px;
         position: relative;
@@ -69,6 +69,11 @@
             top: 12px;
             left: 20px;
             color: #72808E;
+        }
+
+        @include respond-to(mobile) {
+
+            margin: 0 60px;
         }
 
         @include respond-to(tablet) {

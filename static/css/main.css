@@ -2996,7 +2996,7 @@ p {
   padding-bottom: 100px; }
 
 .homepage__search-bar {
-  margin: 0 60px;
+  margin: 20px 20px;
   max-width: 600px;
   min-width: 270px;
   position: relative; }
@@ -3010,6 +3010,9 @@ p {
     top: 12px;
     left: 20px;
     color: #72808E; }
+  @media only screen and (min-width: 480px) {
+    .homepage__search-bar {
+      margin: 0 60px; } }
   @media only screen and (min-width: 768px) {
     .homepage__search-bar {
       margin: 0 auto; } }
