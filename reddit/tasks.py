@@ -14,16 +14,18 @@ client_secret = 'syiqQ-fJQakz3f7p7rYiVVcnWYM'
 user_agent = 'PyEng MemeMarket Bot 0.1'
 
 
-@periodic_task(run_every=timedelta(seconds=10))
+@periodic_task(run_every=timedelta(minutes=2))
 def get_hot_submissions_advice_animals():
     reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent)
     sub = "adviceanimals"
     subreddit = reddit.subreddit(sub)
     print('Pulling data from {0}'.format(sub))
+    count = 0
     for submission in subreddit.hot(limit=100):
+        count += 1
         if not (submission.stickied):
             try:
-                print('Processing post: {0}'.format(submission.id))
+                print('{0}.Processing post: {1}'.format(count, submission.id))
                 post = RedditPost.objects.filter(submission_id=submission.id)
                 if (post.__len__() > 0):
                     post = post[0]
