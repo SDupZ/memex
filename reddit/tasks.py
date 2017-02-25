@@ -27,10 +27,11 @@ def get_hot_submissions_advice_animals():
     for submission in subreddit.hot(limit=100):
         count += 1
         if not (submission.stickied):
+            # import pdb; pdb.set_trace()
             try:
                 print('{0}.Processing post: {1}'.format(count, submission.id))
                 post = RedditPost.objects.filter(submission_id=submission.id)
-                if (post.__len__() > 0):
+                if (len(post) > 0):
                     post = post[0]
                 else:
                     meme_url = parse_reddit_url(submission.url)
@@ -51,7 +52,10 @@ def get_hot_submissions_advice_animals():
                         submission_created=datetime.utcfromtimestamp(submission.created),
                         author=str(submission.author),
                     )
-                    post.save()
+                    try:
+                        post.save()
+                    except Exception as e:
+                        print("Error saving Reddit Post " + str(e) + " : " + str(submission.title))
 
                 snapshot = RedditPostSnapshot(
                     reddit_post=post,
@@ -62,4 +66,4 @@ def get_hot_submissions_advice_animals():
                 snapshot.save()
 
             except Exception as e:
-                print("ERRUH " + str(e) + " : " + str(submission.title))
+                print("Error " + str(e) + " : " + str(submission.title))

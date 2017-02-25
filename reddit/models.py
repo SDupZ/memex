@@ -3,7 +3,7 @@ from memes.models import Meme, MemeFile
 
 
 class RedditPost(models.Model):
-    submission_id = models.CharField(db_index=True, max_length=100)
+    submission_id = models.CharField(db_index=True, unique=True, max_length=100)
     likely_meme = models.ForeignKey(Meme)
     closest_image = models.ForeignKey(MemeFile)
     image_similarity = models.DecimalField(decimal_places=4, max_digits=8)
