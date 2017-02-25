@@ -2,3 +2,5 @@
 *.save
 node_modules/
 venv/
+celerybeat.pid
+celerybeat-schedule

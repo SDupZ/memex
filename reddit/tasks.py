@@ -25,9 +25,8 @@ def get_hot_submissions_advice_animals():
     print('Pulling data from {0}'.format(sub))
     count = 0
     for submission in subreddit.hot(limit=100):
-        count += 1
         if not (submission.stickied):
-            # import pdb; pdb.set_trace()
+            count += 1
             try:
                 print('{0}.Processing post: {1}'.format(count, submission.id))
                 post = RedditPost.objects.filter(submission_id=submission.id)
@@ -51,6 +50,7 @@ def get_hot_submissions_advice_animals():
                         permalink=str(submission.permalink),
                         submission_created=datetime.utcfromtimestamp(submission.created),
                         author=str(submission.author),
+                        over_18=submission.over_18
                     )
                     try:
                         post.save()
@@ -61,7 +61,9 @@ def get_hot_submissions_advice_animals():
                     reddit_post=post,
                     date_crawled=timezone.now(),
                     score=int(submission.score),
-                    gilded=str(submission.gilded)
+                    rank=int(count),
+                    gilded=submission.gilded,
+                    num_comments=int(submission.num_comments),
                 )
                 snapshot.save()
 

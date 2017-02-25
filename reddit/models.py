@@ -14,6 +14,7 @@ class RedditPost(models.Model):
     permalink = models.CharField(max_length=200)
     submission_created = models.DateTimeField()
     author = models.CharField(max_length=200)
+    over_18 = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -27,4 +28,6 @@ class RedditPostSnapshot(models.Model):
     reddit_post = models.ForeignKey(RedditPost, related_name="reddit_post_snapshots")
     date_crawled = models.DateTimeField()
     score = models.IntegerField()
+    rank = models.IntegerField()
     gilded = models.BooleanField(default=False)
+    num_comments = models.IntegerField()
