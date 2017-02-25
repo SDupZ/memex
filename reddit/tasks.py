@@ -1,13 +1,16 @@
 import praw
 import indicoio
+from decimal import *
 from datetime import datetime, timedelta
 from scipy import spatial
-from utils.imageLibrary import parse_reddit_url, generate_probabilities
-from .models import RedditPost, RedditPostSnapshot
-from functools import wraps
 from celery.task import periodic_task
+from functools import wraps
+from django.utils import timezone
 
 from memex.celeryconf import app
+from memes.models import Meme, MemeFile
+from .models import RedditPost, RedditPostSnapshot
+from utils.imageLibrary import parse_reddit_url, generate_probabilities
 
 client_id = 'B1qHlERNKwBQyQ'
 client_secret = 'syiqQ-fJQakz3f7p7rYiVVcnWYM'
@@ -32,25 +35,28 @@ def get_hot_submissions_advice_animals():
                 else:
                     meme_url = parse_reddit_url(submission.url)
                     result = generate_probabilities(meme_url)
-                    likely_meme = max(result, key=lambda i: result[i])
+                    closest_image = max(result, key=lambda i: result[i])
+                    meme_file = MemeFile.objects.get(filename=closest_image)
+                    likely_meme = meme_file.meme
                     post = RedditPost(
                         submission_id=submission.id,
-                        likely_meme=str(likely_meme),
-                        image_similarity=str(result[likely_meme]),
-                        image_url=str(submission.url),
+                        closest_image=meme_file,
+                        likely_meme=likely_meme,
+                        image_similarity=Decimal(result[closest_image]),
+                        image_url=submission.url,
                         title=str(submission.title),
                         subreddit=str(submission.subreddit),
                         subreddit_id=str(submission.subreddit_id),
                         permalink=str(submission.permalink),
-                        submission_created=str(submission.created),
+                        submission_created=datetime.utcfromtimestamp(submission.created),
                         author=str(submission.author),
                     )
                     post.save()
 
                 snapshot = RedditPostSnapshot(
                     reddit_post=post,
-                    date_crawled=str(datetime.now()),
-                    score=str(submission.score),
+                    date_crawled=timezone.now(),
+                    score=int(submission.score),
                     gilded=str(submission.gilded)
                 )
                 snapshot.save()

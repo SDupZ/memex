@@ -13,7 +13,6 @@ class RedditPostSerializer(serializers.HyperlinkedModelSerializer):
         model = RedditPost
         fields = (
             'submission_id',
-            'likely_meme',
             'image_similarity',
             'image_url',
             'title',
