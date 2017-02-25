@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'default',
     'blog',
     'reddit',
-    'memes'
+    'memes',
+    'utils'
 ]
 
 MIDDLEWARE = [
