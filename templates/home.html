@@ -55,8 +55,8 @@
 {% block inlinescripts %}
   <script type="text/javascript">
     $(document).ready(function() {
-        var data_from_django = '{{ data|safe }}';
-        initChartFromJSONString(data_from_django);
+        var data = '{{ data|safe }}';
+        initChartFromJSONString(data);
     });
   </script>
 {% endblock inlinescripts %}
