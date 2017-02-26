@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Meme(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
@@ -14,7 +14,7 @@ class Meme(models.Model):
 
 class MemeFile(models.Model):
     meme = models.ForeignKey(Meme)
-    filename = models.CharField(max_length=255)
+    filename = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return self.filename
