@@ -48,7 +48,7 @@ def get_hot_submissions_advice_animals():
                         subreddit=str(submission.subreddit),
                         subreddit_id=str(submission.subreddit_id),
                         permalink=str(submission.permalink),
-                        submission_created=datetime.utcfromtimestamp(submission.created),
+                        submission_created=datetime.utcfromtimestamp(submission.created_utc),
                         author=str(submission.author),
                         over_18=submission.over_18
                     )

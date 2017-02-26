@@ -36,6 +36,11 @@
 
                 <div class="grid__item desktop--two-thirds">
                     <div class="base-card metrics-tile__section">
+                        <select class="HomepageChartSelect">
+                            <option value="all_time">All Time</option>
+                            <option value="week">Past Week</option>
+                            <option value="day">Past 24 Hours</option>
+                        </select>
                         <canvas id="myChart" width="300" height="200"></canvas>
                     </div>
                 </div>
@@ -55,8 +60,21 @@
 {% block inlinescripts %}
   <script type="text/javascript">
     $(document).ready(function() {
-        var data = '{{ data|safe }}';
-        initChartFromJSONString(data);
+        var data_all_time = `{{ data_all_time|safe }}`;
+        initChartFromJSONString(data_all_time);
+
+        $( ".HomepageChartSelect" ).change(function() {
+            if ($( ".HomepageChartSelect" ).val() == "week") {
+                var data_week = `{{ data_week|safe }}`;
+                initChartFromJSONString(data_week);
+            } else if ($( ".HomepageChartSelect" ).val() == "all_time") {
+                var data_all_time = `{{ data_all_time|safe }}`;
+                initChartFromJSONString(data_all_time);
+            } else if ($( ".HomepageChartSelect" ).val() == "day") {
+                var data_day = `{{ data_day|safe }}`;
+                initChartFromJSONString(data_day);
+            }
+        });
     });
   </script>
 {% endblock inlinescripts %}
