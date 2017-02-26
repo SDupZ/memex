@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static data_tags%}
 
 {% block main-content %}
 
@@ -51,3 +51,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src="/static/js/src/handleHomepageCharts.js"></script>
 {% endblock scripts %}
+
+{% block inlinescripts %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+        var data_from_django = '{{ data|safe }}';
+        initChartFromJSONString(data_from_django);
+    });
+  </script>
+{% endblock inlinescripts %}

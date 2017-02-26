@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Custom
-    'default',
     'blog',
-    'reddit',
+    'data',
+    'default',
     'memes',
+    'reddit',
     'utils'
 ]
 

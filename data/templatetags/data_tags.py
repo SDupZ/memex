@@ -1,5 +1,6 @@
 from django import template
 from memes.models import Meme
+import json
 
 register = template.Library()
 
@@ -13,4 +14,9 @@ def get_meme_count_all_time():
         results.append((meme.name, number_of_posts))
     results = sorted(results, key=lambda x: x[1])
     results.reverse()
-    return results
+    results = results[:10]
+    result_dict = {}
+
+    for item in results:
+        result_dict[item[0]] = item[1]
+    return json.dumps(result_dict)
