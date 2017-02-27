@@ -1,30 +1,33 @@
-var days = [];
-var data = [];
+// var memeDict = {}
+// memeDict["Pepe"] = getRandomInt(0,50);
+// memeDict["Roll Safe"] = getRandomInt(0,50);
+// memeDict["Darth Vadar"] = getRandomInt(0,50);
+// memeDict["Jackie Chan"] = getRandomInt(0,50);
+// memeDict["Obama"] = getRandomInt(0,50);
+// memeDict["Rick Roll"] = getRandomInt(0,50);
+// memeDict["Matrix guy"] = getRandomInt(0,50);
+// memeDict["That russian duck"] = getRandomInt(0,50);
+// memeDict["Black Pepe"] = getRandomInt(0,50);
+// memeDict["White Pepe"] = getRandomInt(0,50);
 
-for(var i=0;i<10;i++){
-  days[i] = i;
-  data[i] = getRandomInt(0,50);
+// SORTING FUNCTIONS
+//
+
+// Sort the keys based on their
+function getSortedKeys(dictionary) {
+    var sortedKeys = Object.keys(dictionary).sort(function (a, b) {
+        return dictionary[b] - dictionary[a];
+    });
+    return sortedKeys;
 }
 
-var memeDict = {}
-memeDict["Pepe"] = getRandomInt(0,50);
-memeDict["Roll Safe"] = getRandomInt(0,50);
-memeDict["Darth Vadar"] = getRandomInt(0,50);
-memeDict["Jackie Chan"] = getRandomInt(0,50);
-memeDict["Obama"] = getRandomInt(0,50);
-memeDict["Rick Roll"] = getRandomInt(0,50);
-memeDict["Matrix guy"] = getRandomInt(0,50);
-memeDict["That russian duck"] = getRandomInt(0,50);
-memeDict["Black Pepe"] = getRandomInt(0,50);
-memeDict["White Pepe"] = getRandomInt(0,50);
 
-var sortedKeys = Object.keys(memeDict).sort(function (a, b) {
-    return memeDict[a] - memeDict[b]
-});
-
-var sortedValues = [];
-for (x in sortedKeys) {
-    sortedValues.push(memeDict[sortedKeys[x]]);
+function getSortedValues(dictionary, sortedKeys) {
+    var sortedValues = [];
+    for (x in sortedKeys) {
+        sortedValues.push(dictionary[sortedKeys[x]]);
+    }
+    return sortedValues;
 }
 
 
@@ -81,11 +84,10 @@ function initChart(labels, data) {
 }
 
 function initChartFromJSONString(jsonString) {
-    var json = JSON.parse(jsonString);
-    var labels = Object.keys(json);
-    var data = Object.values(json);
+    var memeDict = JSON.parse(jsonString);
 
-    initChart(labels, data);
+    var sortedKeys = getSortedKeys(memeDict);
+    var sortedValues = getSortedValues(memeDict, sortedKeys);
+
+    initChart(sortedKeys, sortedValues);
 }
-
-// initChart(sortedKeys, sortedValues);

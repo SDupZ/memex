@@ -1,12 +1,10 @@
-from django import template
-from memes.models import Meme
 from django.core.serializers.json import DjangoJSONEncoder
 from datetime import datetime, timedelta
 import json
 
-register = template.Library()
+from memes.models import Meme
 
-@register.simple_tag
+
 def get_memes_count(filter_by):
     memes = Meme.objects.all()
     results = []
