@@ -1,10 +1,6 @@
-
 from django.shortcuts import render
-from blog.models import BlogPost
-from django.http import HttpResponse, Http404
-
 from data import data_tags
-from django.core import serializers
+
 
 def home(request):
     template = 'home.html'

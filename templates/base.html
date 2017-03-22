@@ -26,9 +26,10 @@
         {% block main-content %}
         {% endblock %}
 
-        <hr class="divider-horizontal"/>
-        {% include 'includes/_footer.html' %}
-
+        {% block footer %}
+            <hr class="divider-horizontal"/>
+            {% include 'includes/_footer.html' %}
+        {% endblock %}
 
         <!-- Javascripts -->
         <!-- Vendor -->

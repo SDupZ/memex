@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block header %}
+    <h2>Header Goes Here</h2>
+{% endblock %}
+
+{% block main-content %}
+    <div class="page">
+        <div class="container container">
+
+            <div class="grid grid--center">
+                <div class="grid__item desktop--one-whole">
+                    <div class="base-card">
+                        <h2>Test</h2>
+                    </div>
+                </div>
+
+                <div class="grid__item desktop--one-half">
+                    <div class="base-card card__yesorno card__yesorno--yes">
+                    </div>
+                </div>
+
+                <div class="grid__item desktop--one-half">
+                    <div class="base-card card__yesorno card__yesorno--no">
+                        <h2>Test</h2>
+                    </div>
+                </div>
+
+            </div>
+            <h2></h2>
+        </div>
+    </div>
+{% endblock main-content %}
+
+{% block footer %}
+    <h2>Footer Goes Here</h2>
+{% endblock %}
