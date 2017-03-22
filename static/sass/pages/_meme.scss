@@ -5,6 +5,36 @@
 
 .meme-tile__container {
     padding: 26px;
+
+    .heading__4 {
+        font-style: bold;
+    }
+
+    .down-arrow, .up-arrow {
+        margin-right: 10px;
+    }
+
+    .daily-change {
+        display: inline-block;
+    }
+
+    .stat-table {
+        width: 100%;
+
+        th, td {
+            padding: 2px 0;
+            border: 1px solid #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            text-align: right;
+        }
+    }
+
 }
 
 .meme-preview {
