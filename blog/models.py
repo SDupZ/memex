@@ -2,9 +2,10 @@ from datetime import datetime
 from django.db import models
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
+from utils.models import BaseModel
 
 
-class BlogPost(models.Model):
+class BlogPost(BaseModel):
     created = models.DateTimeField(db_index=True, auto_now_add=True)
     modified = models.DateTimeField(db_index=True, auto_now=True)
 

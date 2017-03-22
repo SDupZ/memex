@@ -1,8 +1,9 @@
 from django.db import models
 from memes.models import Meme, MemeFile
+from utils.models import BaseModel
 
 
-class RedditPost(models.Model):
+class RedditPost(BaseModel):
     submission_id = models.CharField(db_index=True, unique=True, max_length=100)
     likely_meme = models.ForeignKey(Meme)
     closest_image = models.ForeignKey(MemeFile)
@@ -24,7 +25,7 @@ class RedditPost(models.Model):
         ordering = ('submission_created',)
 
 
-class RedditPostSnapshot(models.Model):
+class RedditPostSnapshot(BaseModel):
     reddit_post = models.ForeignKey(RedditPost, related_name="reddit_post_snapshots")
     date_crawled = models.DateTimeField()
     score = models.IntegerField()

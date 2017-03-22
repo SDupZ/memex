@@ -11,7 +11,7 @@ def get_memes_count(filter_by):
     for meme in memes:
         if (filter_by == "day"):
             reddit_posts_set = meme.redditpost_set.filter(submission_created__lte=datetime.now(), submission_created__gte=(datetime.now() - timedelta(days=1)))
-        elif (filter_by =="week"):
+        elif (filter_by == "week"):
             reddit_posts_set = meme.redditpost_set.filter(submission_created__lte=datetime.now(), submission_created__gte=(datetime.now() - timedelta(weeks=1)))
         else:
             reddit_posts_set = meme.redditpost_set.all()

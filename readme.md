@@ -5,6 +5,8 @@
 `docker-compose build`
 `docker-compose up`
 
+Link to documentation:
+https://github.com/SDupZ/memex/wiki/
 
 ### For sass compilation
 

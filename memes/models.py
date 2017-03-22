@@ -1,7 +1,8 @@
 from django.db import models
+from utils.models import BaseModel
 
 
-class Meme(models.Model):
+class Meme(BaseModel):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -12,7 +13,7 @@ class Meme(models.Model):
         ordering = ('name',)
 
 
-class MemeFile(models.Model):
+class MemeFile(BaseModel):
     meme = models.ForeignKey(Meme)
     filename = models.CharField(max_length=255, unique=True)
 
