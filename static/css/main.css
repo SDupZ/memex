@@ -2483,6 +2483,12 @@ body {
 .display-none {
   display: none; }
 
+.up-trend {
+  color: #49a942 !important; }
+
+.down-trend {
+  color: #c12828 !important; }
+
 .up-arrow, .down-arrow, .left-arrow, .right-arrow {
   border-bottom: 2px solid #0091EA;
   border-left: 2px solid #0091EA;
@@ -2713,6 +2719,12 @@ textarea:focus {
 .heading__3 {
   display: block;
   font-size: 1.5em;
+  font-weight: 500;
+  color: #000; }
+
+.heading__4 {
+  display: block;
+  font-size: 1.3em;
   font-weight: 500;
   color: #000; }
 
@@ -3031,6 +3043,21 @@ p {
 
 .meme-tile__container {
   padding: 26px; }
+  .meme-tile__container .heading__4 {
+    font-style: bold; }
+  .meme-tile__container .down-arrow, .meme-tile__container .up-arrow {
+    margin-right: 10px; }
+  .meme-tile__container .daily-change {
+    display: inline-block; }
+  .meme-tile__container .stat-table {
+    width: 100%; }
+    .meme-tile__container .stat-table th, .meme-tile__container .stat-table td {
+      padding: 2px 0;
+      border: 1px solid #fff; }
+    .meme-tile__container .stat-table th {
+      text-align: left; }
+    .meme-tile__container .stat-table td {
+      text-align: right; }
 
 .meme-preview {
   width: 100%; }

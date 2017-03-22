@@ -10,3 +10,11 @@
 .display-none {
     display: none;
 }
+
+.up-trend {
+    color: $positiveMovement !important;
+}
+
+.down-trend {
+    color: $negativeMovement !important;
+}
