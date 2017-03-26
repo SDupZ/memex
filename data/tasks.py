@@ -29,7 +29,7 @@ def update_all_memes_past_24_hours():
         DT = timezone.now() - timezone.timedelta(hours=25)
         snapshot_24_hours_ago = MemeDataSnapshot24Hour.objects.filter(meme=meme).order_by('created_date').filter(created_date__gte=DT)[0]
 
-        crs_l24hrs_change = ((snapshot_24_hours_ago.score - score) / snapshot_24_hours_ago.score) * 100
+        crs_l24hrs_change = ((snapshot_24_hours_ago.crs_l24hrs - score) / snapshot_24_hours_ago.crs_l24hrs) * 100
 
         snapshot = MemeDataSnapshot24Hour(
             meme=meme,
