@@ -5,6 +5,6 @@ sleep 10
 
 cd /srv/www/memex/memex
 
-celery beat -A memex.celeryconf
+# su -m myuser -c "celery beat -A memex.celeryconf"
 
 /bin/bash
