@@ -9,6 +9,8 @@ class MemeDataSnapshot24Hour(BaseModel):
     meme = models.ForeignKey(Meme)
     # Combined reddit score of the last 24 hours
     crs_l24hrs = models.IntegerField()
+    # Percentage change from the closest snapshot to 24 hours ago
+    crs_l24hrs_change = models.DecimalField(decimal_places=4, max_digits=8)
     # Number of posts on reddit in the last 24 hors
     np_l24hrs = models.IntegerField()
 

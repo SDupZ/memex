@@ -8,7 +8,7 @@ from memex.celeryconf import app
 from memes.models import Meme
 from reddit.models import RedditPost, RedditPostSnapshot
 from data.models import MemeDataSnapshot24Hour, MemeDataSnapshot7Days, MemeDataSnapshot30Days
-
+from django.utils import timezone
 
 @periodic_task(run_every=timedelta(hours=2))
 def update_all_memes_past_24_hours():
@@ -26,10 +26,16 @@ def update_all_memes_past_24_hours():
             if len(snapshots) > 0:
                 score += snapshots[0].score
 
+        DT = timezone.now() - timezone.timedelta(hours=25)
+        snapshot_24_hours_ago = MemeDataSnapshot24Hour.objects.filter(meme=meme).order_by('created_date').filter(created_date__gte=DT)[0]
+
+        crs_l24hrs_change = ((snapshot_24_hours_ago.score - score) / snapshot_24_hours_ago.score) * 100
+
         snapshot = MemeDataSnapshot24Hour(
             meme=meme,
             crs_l24hrs=score,
             np_l24hrs=number_of_posts
+            crs_l24hrs_change=crs_l24hrs_change
         )
 
         try:
