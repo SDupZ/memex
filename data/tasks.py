@@ -34,7 +34,7 @@ def update_all_memes_past_24_hours():
         snapshot = MemeDataSnapshot24Hour(
             meme=meme,
             crs_l24hrs=score,
-            np_l24hrs=number_of_posts
+            np_l24hrs=number_of_posts,
             crs_l24hrs_change=crs_l24hrs_change
         )
 
