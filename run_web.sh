@@ -4,11 +4,13 @@
 sleep 10
 
 cd /srv/www/memex/memex
-# prepare init migration
-su -m myuser -c "python manage.py makemigrations"
-# migrate db, so we have the latest db schema
-su -m myuser -c "python manage.py migrate"
-# load the meme models in from memedbfeatures.json
-su -m myuser -c "python manage.py loadMemeModels"
-# start development server on public ip interface, on port 8010
-su -m myuser -c "python manage.py runserver 0.0.0.0:8010"
+
+python manage.py migrate
+
+python manage.py loadMemeModels
+
+python manage.py collectstatic --noinput
+
+uwsgi --ini /srv/www/memex/memex/docker/server/memex_uwsgi.ini --daemonize /var/log/uwsgi.log
+
+/etc/init.d/nginx start

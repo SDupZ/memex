@@ -16,3 +16,4 @@ indicoio
 scipy
 numpy
 GitPython
+uwsgi

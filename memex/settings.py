@@ -136,6 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_ROOT = join(VIRTUALENV_ROOT, 'public-www', 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = join(VIRTUALENV_ROOT, 'public-www/media')
 MEDIA_URL = '/media/'

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# wait for PSQL server to start
+sleep 10
+
+cd /srv/www/memex/memex
+# prepare init migration
+su -m myuser -c "python manage.py makemigrations"
+# migrate db, so we have the latest db schema
+su -m myuser -c "python manage.py migrate"
+# load the meme models in from memedbfeatures.json
+su -m myuser -c "python manage.py loadMemeModels"
+# start development server on public ip interface, on port 8010
+su -m myuser -c "python manage.py runserver 0.0.0.0:8010"
