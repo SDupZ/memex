@@ -11,6 +11,6 @@ python manage.py loadMemeModels
 
 python manage.py collectstatic --noinput
 
-uwsgi --ini /srv/www/memex/memex/docker/server/memex_uwsgi.ini --daemonize /var/log/uwsgi.log
-
 /etc/init.d/nginx start
+
+uwsgi --ini /srv/www/memex/memex/docker/server/memex_uwsgi.ini --logto /var/log/uwsgi.log
